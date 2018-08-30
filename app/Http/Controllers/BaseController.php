@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Question;
 use App\Records;
 use Illuminate\Http\Request;
 
@@ -19,5 +20,10 @@ class BaseController extends Controller
         $record->answer = $request->answer;
         $record->save();
         return response()->json(['success' => true],201);
+    }
+
+    public function getQuestion() {
+        $question = Question::all();
+        return response()->json(['data' => $question],200);
     }
 }
